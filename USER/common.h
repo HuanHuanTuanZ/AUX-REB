@@ -231,8 +231,8 @@ void logic_operation(void);
 //void SBUS_out(void);
 void CRSF_out(void); // CRSF主进程
 void USB_out(void);
-void ppm_enable(void);	// 开启PPM信号输出
-void ppm_disable(void); // 关闭PPM信号输出
+//void ppm_enable(void);	// 开启PPM信号输出
+//void ppm_disable(void); // 关闭PPM信号输出
 void ppm_Cap_Init(u16 arr, u16 psc);
 
 /////////CRSF
