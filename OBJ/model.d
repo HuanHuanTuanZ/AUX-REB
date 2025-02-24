@@ -1,0 +1,42 @@
+..\obj\model.o: model.c
+..\obj\model.o: common.h
+..\obj\model.o: stm32f10x.h
+..\obj\model.o: ..\CORE\core_cm3.h
+..\obj\model.o: E:\Keil5 MDK\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\model.o: system_stm32f10x.h
+..\obj\model.o: stm32f10x_conf.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h
+..\obj\model.o: ..\USER\stm32f10x.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_bkp.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_can.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_cec.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_crc.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_dac.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_dbgmcu.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_dma.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_flash.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_fsmc.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_i2c.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_iwdg.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_pwr.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_rtc.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_sdio.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_spi.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_tim.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h
+..\obj\model.o: ..\STM32F10x_FWLib\inc\misc.h
+..\obj\model.o: ..\SYSTEM\delay\delay.h
+..\obj\model.o: ..\SYSTEM\sys\sys.h
+..\obj\model.o: xuan.h
+..\obj\model.o: ..\USBLib\inc\usb_hw.h
+..\obj\model.o: ..\USBLib\inc\type.h
+..\obj\model.o: ..\USBLib\inc\usb.h
+..\obj\model.o: XUI.h
+..\obj\model.o: ..\SYSTEM\usart\usart.h
+..\obj\model.o: E:\Keil5 MDK\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\model.o: ..\HARDWARE\GPIO\gpio.h
+..\obj\model.o: E:\Keil5 MDK\ARM\ARMCC\Bin\..\include\string.h

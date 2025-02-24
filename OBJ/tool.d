@@ -1,0 +1,41 @@
+..\obj\tool.o: tool.c
+..\obj\tool.o: common.h
+..\obj\tool.o: stm32f10x.h
+..\obj\tool.o: ..\CORE\core_cm3.h
+..\obj\tool.o: E:\Keil5 MDK\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\tool.o: system_stm32f10x.h
+..\obj\tool.o: stm32f10x_conf.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h
+..\obj\tool.o: ..\USER\stm32f10x.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_bkp.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_can.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_cec.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_crc.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_dac.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_dbgmcu.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_dma.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_flash.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_fsmc.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_i2c.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_iwdg.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_pwr.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_rtc.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_sdio.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_spi.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_tim.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h
+..\obj\tool.o: ..\STM32F10x_FWLib\inc\misc.h
+..\obj\tool.o: ..\SYSTEM\delay\delay.h
+..\obj\tool.o: ..\SYSTEM\sys\sys.h
+..\obj\tool.o: xuan.h
+..\obj\tool.o: ..\USBLib\inc\usb_hw.h
+..\obj\tool.o: ..\USBLib\inc\type.h
+..\obj\tool.o: ..\USBLib\inc\usb.h
+..\obj\tool.o: XUI.h
+..\obj\tool.o: ..\SYSTEM\usart\usart.h
+..\obj\tool.o: E:\Keil5 MDK\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\tool.o: E:\Keil5 MDK\ARM\ARMCC\Bin\..\include\math.h

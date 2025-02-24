@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.sqlbook": "sql",
+        "*.ndjson": "jsonl",
+        "*.dbclient-js": "javascript",
+        "open_tel_mavlink.h": "c",
+        "mavlink_usart_fifo.h": "c",
+        "mavlink_avoid_errors.h": "c",
+        "common.h": "c"
+    }
+}
