@@ -101,7 +101,7 @@ extern u8 CRSF_TLM_flag;
 extern u8 TIM2CH1_CAPTURE_STA;	// 输入捕获状态
 extern u16 TIM2CH1_CAPTURE_VAL; // 输入捕获值
 extern u16 ppm_value[8];		// ppm输入值
-extern u8 ppm_mode;				// 1是输入，0是输出
+//extern u8 ppm_mode;				// 1是输入，0是输出
 extern u8 ppm_status;			// ppm输入状态
 extern u8 UP, DOWN, LEFT, RIGHT, ESC, OK;
 extern u8 first_splash;

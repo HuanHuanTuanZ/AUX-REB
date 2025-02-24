@@ -172,11 +172,11 @@ BAT_ADC      ->  PB1
 
 int main(void)
 {
-	SystemInit();				   // 系统初始化72M
-	delay_init();				   // 延时函数初始化
-	delay_ms(100);				   // 上电延时，确保电源稳定
-	Gpio_Init();				   // 初始化输出引脚
-	BEEP_Init(999, CPU_SPEED - 1); // 蜂鸣器初始化
+	SystemInit();									// 系统初始化72M
+	delay_init();									// 延时函数初始化
+	delay_ms(100);									// 上电延时，确保电源稳定
+	Gpio_Init();									// 初始化输出引脚
+	BEEP_Init(999, CPU_SPEED - 1);					// 蜂鸣器初始化
 	LCD_BLK_Clr();									// 打开背光
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); // 设置NVIC中断分组2:2位抢占优先级，2位响应优先级
 	uart_init(100000);								// 串口1初始化为CRSF
@@ -216,11 +216,7 @@ int main(void)
 	bat_adc = Get_Adc(9); // 获取电池电压值
 	/////////////////////////////////////////////////////////////////////////
 	out_mode = 1;
-	ppm_mode = 1;	   // PPM输入模式
-	if (ppm_mode == 1) // PPM输入模式
-	{
-		ppm_Cap_Init(0xffff, CPU_SPEED - 1); // 以1Mhz的频率计数
-	}
+	ppm_Cap_Init(0xffff, CPU_SPEED - 1); // 以1Mhz的频率计数
 	if (out_mode == 1)
 		usart3_init(400000); // CRSF输出
 
@@ -409,8 +405,8 @@ int main(void)
 			}
 		}
 		message_reflash(); // 刷新提示信息
-		XUI_reflash(); // 刷新屏幕
-		fps_temp++;	   // 屏幕刷新计数器+1
+		XUI_reflash();	   // 刷新屏幕
+		fps_temp++;		   // 屏幕刷新计数器+1
 
 #if USB
 		if (USB_Configuration)

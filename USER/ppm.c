@@ -4,22 +4,11 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*---------------------------------PPM信号输出------------------------------------------------------/-----------------*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void ppm_enable() // 开启PPM信号输出
-{
-	GPIO_InitTypeDef GPIO_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, (FunctionalState)1);
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	TIM_Cmd(TIM2, (FunctionalState)1);
-}
 void ppm_disable() // 关闭PPM信号输出
 {
 	TIM_Cmd(TIM2, (FunctionalState)0);
 }
 
-u8 ppm_mode = 1;   // 1是输入，0是输出
 u16 ppm_value[8];  // ppm输入值
 u8 ppm_sta = 0;	   // ppm解析计数器
 u8 ppm_status = 0; // ppm输入状态
@@ -27,140 +16,50 @@ u8 ppm_status = 0; // ppm输入状态
 u16 ppm_sum = 0;
 u8 ppm_count = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*---------------------------------PPM1信号输出-----------------------------------------------------------------------*/
+/*---------------------------------PPM定时器-----------------------------------------------------------------------*/
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void TIM2_IRQHandler(void) // TIM32    20ms
 {
-	if (ppm_mode == 0) // PPM输出模式
-	{
-		if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) //??TIM3?????"??
+	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
+	{ // 超时，解析失败或未检测到PPM信号
+		u8 i;
+		ppm_sta = 0;
+		if (ppm_status)
 		{
-			ppm_count++;
-			switch (ppm_count)
-			{
-			case 1:
-				ppm = 1;
-				ppm_sum += TIM2->ARR = 400;
-				break;
-			case 2:
-				ppm = 0;
-				ppm_sum += TIM2->ARR = CH_out[0] - 400;
-				break;
-			case 3:
-				ppm = 1;
-				ppm_sum += TIM2->ARR = 400;
-				break;
-			case 4:
-				ppm = 0;
-				ppm_sum += TIM2->ARR = CH_out[1] - 400;
-				break;
-			case 5:
-				ppm = 1;
-				ppm_sum += TIM2->ARR = 400;
-				break;
-			case 6:
-				ppm = 0;
-				ppm_sum += TIM2->ARR = CH_out[2] - 400;
-				break;
-			case 7:
-				ppm = 1;
-				ppm_sum += TIM2->ARR = 400;
-				break;
-			case 8:
-				ppm = 0;
-				ppm_sum += TIM2->ARR = CH_out[3] - 400;
-				break;
-			case 9:
-				ppm = 1;
-				ppm_sum += TIM2->ARR = 400;
-				break;
-			case 10:
-				ppm = 0;
-				ppm_sum += TIM2->ARR = CH_out[4] - 400;
-				break;
-			case 11:
-				ppm = 1;
-				ppm_sum += TIM2->ARR = 400;
-				break;
-			case 12:
-				ppm = 0;
-				ppm_sum += TIM2->ARR = CH_out[5] - 400;
-				break;
-			case 13:
-				ppm = 1;
-				ppm_sum += TIM2->ARR = 400;
-				break;
-			case 14:
-				ppm = 0;
-				ppm_sum += TIM2->ARR = CH_out[6] - 400;
-				break;
-			case 15:
-				ppm = 1;
-				ppm_sum += TIM2->ARR = 400;
-				break;
-			case 16:
-				ppm = 0;
-				ppm_sum += TIM2->ARR = CH_out[7] - 400;
-				break;
-			case 17:
-				ppm = 1;
-				ppm_sum += TIM2->ARR = 400;
-				break;
-			case 18:
-				ppm = 0;
-				TIM2->ARR = 20000 - ppm_sum;
-				ppm_sum = 0;
-				ppm_count = 0;
-				break;
-			default:
-				break;
-			}
-			TIM_ClearITPendingBit(TIM2, TIM_IT_Update); //??TIMx??????
+		}
+		else
+		{
+			for (i = 0; i < 8; i++)
+				ppm_value[i] = 1500;
 		}
 	}
-	else
+	if (TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET) // 捕获1发生捕获事件
 	{
-		if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
-		{ // 超时，解析失败或未检测到PPM信号
-			u8 i;
-			ppm_sta = 0;
-			if (ppm_status)
-			{
-			}
-			else
-			{
-				for (i = 0; i < 8; i++)
-					ppm_value[i] = 1500;
-			}
-		}
-		if (TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET) // 捕获1发生捕获事件
+		if (ppm_sta)
 		{
-			if (ppm_sta)
+			u16 temp = TIM_GetCapture1(TIM2);
+			if (temp > 500 && temp < 2500) // 判定范围
 			{
-				u16 temp = TIM_GetCapture1(TIM2);
-				if (temp > 500 && temp < 2500) // 判定范围
-				{
-					ppm_value[ppm_sta - 1] = temp + 1;
-					if (ppm_value[ppm_sta - 1] < 1000)
-						ppm_value[ppm_sta - 1] = 1000;
-					if (ppm_sta < 8)
-						ppm_sta++;
-					else
-						ppm_sta = 0;
-					ppm_status = 5; // 成功检测到PPM信号标志
-				}
+				ppm_value[ppm_sta - 1] = temp + 1;
+				if (ppm_value[ppm_sta - 1] < 1000)
+					ppm_value[ppm_sta - 1] = 1000;
+				if (ppm_sta < 8)
+					ppm_sta++;
 				else
 					ppm_sta = 0;
+				ppm_status = 5; // 成功检测到PPM信号标志
 			}
-			if (ppm_sta == 0) // 还未开始解析
-			{
-				if (TIM_GetCapture1(TIM2) > 3000) // 如果时间大于5000us，
-					ppm_sta = 1;				  // 开始解析
-			}
-			TIM_SetCounter(TIM2, 0); // 清除计数器
+			else
+				ppm_sta = 0;
 		}
-		TIM_ClearITPendingBit(TIM2, TIM_IT_CC1 | TIM_IT_Update); // 清除中断标志位
+		if (ppm_sta == 0) // 还未开始解析
+		{
+			if (TIM_GetCapture1(TIM2) > 3000) // 如果时间大于5000us，
+				ppm_sta = 1;				  // 开始解析
+		}
+		TIM_SetCounter(TIM2, 0); // 清除计数器
 	}
+	TIM_ClearITPendingBit(TIM2, TIM_IT_CC1 | TIM_IT_Update); // 清除中断标志位
 }
 
 /////////////////////////////////////////////////////////////////////////

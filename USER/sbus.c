@@ -38,48 +38,8 @@ void sbus_init(u32 bound)
 	USART_Init(USART3, &USART_InitStructure);										//
 	USART_Cmd(USART3, ENABLE);														//
 }
-/*
-void SBUS_package()
-{
-	u8 i = 0, ch = 0, bit8 = 0;
-	u32 bit32 = 0;
-	u16 temp[16];
-	packet[i++] = 0x0F; // SBUS包头
 
-	for (ch = 0; ch < 16; ch++) // 开始编码，
-	{
-		temp[ch] = CH_out[ch] * 1.6 - 1408; // 比例换算
-		bit32 |= temp[ch] << bit8;
-		bit8 += 11; // 数据位数>8
-		while (bit8 >= 8)
-		{
-			packet[i++] = bit32;
-			bit32 >>= 8;
-			bit8 -= 8;
-		}
-	}
-}
 
-void sbus_send()
-{
-	u8 i = 0;
-	sport_dir = 1;
-	while (USART_GetFlagStatus(USART3, USART_FLAG_TC) != SET)
-		; // 等待发送结束
-	for (i = 0; i < 25; i++)
-	{
-		USART_SendData(USART3, packet[i]); // 向串口3发送数据
-		while (USART_GetFlagStatus(USART3, USART_FLAG_TC) != SET)
-			; // 等待发送结束
-	}
-}
-
-void SBUS_out()
-{
-	SBUS_package(); // SBUS输出封包函数
-	sbus_send();	// SBUS信号直接输出
-}
-*/
 u8 sbus_sta = 0;
 u16 sbus_value[16];
 u8 sbus_buf[25];
