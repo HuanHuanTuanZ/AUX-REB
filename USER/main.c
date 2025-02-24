@@ -581,6 +581,8 @@ void TIM1_UP_IRQHandler(void) // 0.5MS查询一次
 		mix();			   // 混控运算
 		logic_operation(); // 逻辑开关运算
 		output();		   // 输出运算
+		CRSF_out();		   // CRSF输出
+		/*
 		switch (out_mode)
 		{
 		case 1:
@@ -597,7 +599,7 @@ void TIM1_UP_IRQHandler(void) // 0.5MS查询一次
 		default:
 			break;
 		}
-
+		*/
 		if (time_use1) // 计时器计数
 			time_10ms += 3;
 		if (time_use2)
