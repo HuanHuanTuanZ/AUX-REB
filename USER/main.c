@@ -220,18 +220,9 @@ int main(void)
 	if (ppm_mode == 1) // PPM输入模式
 	{
 		ppm_Cap_Init(0xffff, CPU_SPEED - 1); // 以1Mhz的频率计数
-		if (out_mode == 3)
-			out_mode = 1;
 	}
 	if (out_mode == 1)
 		usart3_init(400000); // CRSF输出
-	else if (out_mode == 2)
-		sbus_init(100000);	// SBUS输出
-	else if (out_mode == 3) // PPM输出
-	{
-		ppm_enable();
-		TIM2_Int_Init(999, CPU_SPEED - 1); // 定时器1ms中断
-	}
 
 	TIM3_Int_Init(999, CPU_SPEED * 10 - 1); // 定时器10ms中断
 	TIM1_Int_Init(999, CPU_SPEED * 10 - 1); // 定时器1ms中断
@@ -428,13 +419,13 @@ int main(void)
 			{
 				message("USB已连接", 20);
 				out_mode_temp = out_mode;
-				out_mode = 4;
+				out_mode = 2;
 			}
 			usb_flag = 10;
 		}
 		else if (usb_flag)
 			usb_flag--;
-		else if (out_mode == 4)
+		else if (out_mode == 2)
 		{
 			out_mode = out_mode_temp;
 			message("USB已断开", 20);
@@ -581,25 +572,17 @@ void TIM1_UP_IRQHandler(void) // 0.5MS查询一次
 		mix();			   // 混控运算
 		logic_operation(); // 逻辑开关运算
 		output();		   // 输出运算
-		CRSF_out();		   // CRSF输出
-		/*
 		switch (out_mode)
 		{
 		case 1:
 			CRSF_out();
 			break;
 		case 2:
-			SBUS_out();
-			break;
-		case 3:
-			break; // PPM输出
-		case 4:
 			USB_out();
 			break;
 		default:
 			break;
 		}
-		*/
 		if (time_use1) // 计时器计数
 			time_10ms += 3;
 		if (time_use2)

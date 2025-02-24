@@ -38,7 +38,7 @@ void sbus_init(u32 bound)
 	USART_Init(USART3, &USART_InitStructure);										//
 	USART_Cmd(USART3, ENABLE);														//
 }
-
+/*
 void SBUS_package()
 {
 	u8 i = 0, ch = 0, bit8 = 0;
@@ -79,7 +79,7 @@ void SBUS_out()
 	SBUS_package(); // SBUS输出封包函数
 	sbus_send();	// SBUS信号直接输出
 }
-
+*/
 u8 sbus_sta = 0;
 u16 sbus_value[16];
 u8 sbus_buf[25];

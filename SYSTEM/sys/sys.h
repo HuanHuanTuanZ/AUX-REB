@@ -46,7 +46,7 @@
 #define PAout(n)   BIT_ADDR(GPIOA_ODR_Addr,n)  //输出 
 #define PAin(n)    BIT_ADDR(GPIOA_IDR_Addr,n)  //输入 
 
-#define TIM_BDTR_DTG_6(n)   BIT_ADDR(GPIOB_ODR_Addr,n)  //输出 
+#define PBout(n)   BIT_ADDR(GPIOB_ODR_Addr,n)  //输出 
 #define PBin(n)    BIT_ADDR(GPIOB_IDR_Addr,n)  //输入 
 
 #define PCout(n)   BIT_ADDR(GPIOC_ODR_Addr,n)  //输出 

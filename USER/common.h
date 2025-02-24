@@ -228,7 +228,7 @@ void logic_operation(void);
 
 /////////通信信号
 
-void SBUS_out(void);
+//void SBUS_out(void);
 void CRSF_out(void); // CRSF主进程
 void USB_out(void);
 void ppm_enable(void);	// 开启PPM信号输出
