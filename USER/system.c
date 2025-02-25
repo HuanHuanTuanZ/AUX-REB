@@ -74,7 +74,7 @@ void model_reset()
 	model_name_save(model_addr + 164); // 164-171
 }
 
-void model_read()
+void model_read() // 通道数据读取
 {
 	u8 i;
 	if (read16(model_addr + model_size - 1) != 1)

@@ -48,7 +48,7 @@ void battery_check()
 
 const u8 adc_map[6] = {1, 4, 5, 6, 7, 8};
 
-void hardinput()
+void hardinput() // ADC ‰»Î
 {
 	u8 i;
 	int16 hardware_input_temp;
@@ -82,7 +82,7 @@ void hardinput()
 	hardware_value[9] = !ch10 * 1000 + 1000;
 }
 
-void input()
+void input() // ‰»Î‘ÀÀ„
 {
 	u8 i;
 	u16 temp[16];

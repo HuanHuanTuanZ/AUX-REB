@@ -207,7 +207,7 @@ int main(void)
 	lcd_dir = read16(27);		// 获取屏幕方向设置
 	lcd_mirror = read16(28);	// 获取屏幕镜像设置
 	LCD_Init();					// LCD初始化
-	LCD_Fill(0, 0, 159, 79, 0); // 清楚屏幕
+	LCD_Fill(0, 0, 159, 79, 0); // 清除屏幕
 
 #if DMA
 	XUI_dma_init(); // 屏幕DMA初始化

@@ -39,13 +39,12 @@ void sbus_init(u32 bound)
 	USART_Cmd(USART3, ENABLE);														//
 }
 
-
 u8 sbus_sta = 0;
 u16 sbus_value[16];
 u8 sbus_buf[25];
 u8 sbus_status = 0;
 
-void sbus_unpackage()
+void sbus_unpackage() // SBUS½â°üº¯Êý
 {
 	u8 i;
 	u16 value_temp[16];

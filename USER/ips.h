@@ -36,13 +36,19 @@
 
 #define LCD_DC_Clr()   GPIO_ResetBits(GPIOB,GPIO_Pin_14)//DC
 #define LCD_DC_Set()   GPIO_SetBits(GPIOB,GPIO_Pin_14)
- 		     
+
+#define LCD_CS_Clr()   GPIO_ResetBits(GPIOB,GPIO_Pin_12)//CS   PA9 --> PB12
+#define LCD_CS_Set()   GPIO_SetBits(GPIOB,GPIO_Pin_12)
+
+#define LCD_BLK_Clr()  GPIO_SetBits(GPIOB,GPIO_Pin_9)//BLK
+#define LCD_BLK_Set()  GPIO_ResetBits(GPIOB,GPIO_Pin_9)
+/*
 #define LCD_CS_Clr()   GPIO_ResetBits(GPIOA,GPIO_Pin_9)//CS
 #define LCD_CS_Set()   GPIO_SetBits(GPIOA,GPIO_Pin_9)
 
 #define LCD_BLK_Clr()  GPIO_SetBits(GPIOB,GPIO_Pin_9)//BLK
 #define LCD_BLK_Set()  GPIO_ResetBits(GPIOB,GPIO_Pin_9)
-
+*/
 
 #define BLK    PBout(9)
 

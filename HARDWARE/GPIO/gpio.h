@@ -22,7 +22,7 @@
 #define menu_left       PBin(4)
 #define menu_right      PAin(15)
 #define menu_ok         PBin(5)
-#define menu_esc        PBin(12)
+#define menu_esc        PBin(2)  //PB12 ---> PB2
 
 
 #define ch7        PBin(2)

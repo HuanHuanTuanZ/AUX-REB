@@ -91,15 +91,15 @@ void output()
 	for (i = 0; i < 16; i++)
 	{
 		if (output_map[i] < 16)
-			temp = mix_value[output_map[i]];
+			temp = mix_value[output_map[i]]; // 混控
 		else if (output_map[i] < 32)
-			temp = CH_input[output_map[i] - 16];
+			temp = CH_input[output_map[i] - 16]; // 外部输入
 		else if (output_map[i] < 40)
-			temp = hardware_value[output_map[i] - 32];
+			temp = hardware_value[output_map[i] - 32]; // ADC输入
 		else if (output_map[i] < 48)
-			temp = ppm_value[output_map[i] - 40];
+			temp = ppm_value[output_map[i] - 40]; // PPM
 		else if (output_map[i] < 64)
-			temp = sbus_value[output_map[i] - 48];
+			temp = sbus_value[output_map[i] - 48]; // SBUS
 		else if (ch_map[i] < 72)
 			temp = 1500;
 
@@ -149,7 +149,7 @@ void draw_output_info(u8 i)
 	XUI_num(135, 32 + i * 12, CH_out[seq], 4, 12, px == 5 ? mode : 1, px == 5 ? point_color : PC, px == 5 ? back_color : BC);
 }
 
-void output_setup()
+void output_setup() // 通道输出界面
 {
 	u8 i;
 	XUI_str(56, 4, 64, 12, (u8 *)"通道输出", 12, 1, PC, BC);
